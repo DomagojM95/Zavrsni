@@ -65,3 +65,25 @@ insert into dnevnik(naziv,planinar,izlet)
 values('Dnevnik',3,1),
 	  ('PL_Dnevnik',2,2),
 	  ('Moj Pl Dnevnik',1,3);
+
+
+
+	 
+
+select d.ime
+from planina a inner join izlet b on b.planina=a.sifra
+inner join dnevnik c on c.izlet=b.sifra
+inner join planinar d on c.planinar=d.sifra;
+
+
+select d.ime, a.visina, a.ime
+from planina a inner join izlet b on b.planina=a.sifra
+inner join dnevnik c on c.izlet=b.sifra
+inner join planinar d on c.planinar=d.sifra
+where a.visina > 1000 order by 2;
+
+select concat(d.ime, ' ', d.prezime) as planinar, a.visina, a.ime
+from planina a inner join izlet b on b.planina=a.sifra
+inner join dnevnik c on c.izlet=b.sifra
+inner join planinar d on c.planinar=d.sifra
+where a.visina > 1000 order by 2;
