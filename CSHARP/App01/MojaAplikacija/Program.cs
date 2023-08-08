@@ -1,0 +1,3 @@
+﻿using MojaAplikacija;
+
+new Izbornik();
