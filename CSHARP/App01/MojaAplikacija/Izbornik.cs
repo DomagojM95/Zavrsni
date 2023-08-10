@@ -35,6 +35,7 @@ namespace MojaAplikacija
                 case 1:
                     ObradaPlaninar.PrikaziIzbornik();
                     Console.WriteLine("Rad s planinarima");
+                    PrikaziIzbornik();
                     break;
             }
         }
