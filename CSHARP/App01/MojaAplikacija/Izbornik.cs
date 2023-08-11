@@ -10,9 +10,11 @@ namespace MojaAplikacija
     internal class Izbornik
     {
         public ObradaPlaninar ObradaPlaninar { get; set; }
+        public ObradaPlanina ObradaPlanina { get; set; }
         public Izbornik() 
         {
             ObradaPlaninar =new ObradaPlaninar();
+           ObradaPlanina=new ObradaPlanina();
             PozdravnaPoruka();
             PrikaziIzbornik();
         }
@@ -35,6 +37,11 @@ namespace MojaAplikacija
                 case 1:
                     ObradaPlaninar.PrikaziIzbornik();
                     Console.WriteLine("Rad s planinarima");
+                    PrikaziIzbornik();
+                    break;
+                case 3:
+                    ObradaPlanina.PrikaziIzbornik();
+                    Console.WriteLine("Rad s planinama");
                     PrikaziIzbornik();
                     break;
             }

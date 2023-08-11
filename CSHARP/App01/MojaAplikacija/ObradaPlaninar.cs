@@ -37,8 +37,48 @@ namespace MojaAplikacija
                     UnosNovogPlaninara();
                     PrikaziIzbornik();
                     break;
+                case 3:
+                    PromjenaPlaninara();
+                    PrikaziIzbornik();
+                    break;
+                case 4:
+                    if (Planinari.Count == 0)
+                    {
+                        Console.WriteLine("nema vise planinara za brisanje");
+                    }
+                    else
+                    {
+                        BrisanjePlaninara();
+                    }
+                    PrikaziIzbornik();
+                    break;
+                case 5:
+                    Console.WriteLine("Gorov rad s planinarima");
+                    break;
+
 
             }
+        }
+
+        private void BrisanjePlaninara()
+        {
+            PrikaziPlaninare();
+            int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj planinara za obradu: ", "Nije dobro", 1, Planinari.Count());
+            Planinari.RemoveAt(broj - 1);
+        }
+
+        private void PromjenaPlaninara()
+        {
+            PrikaziPlaninare();
+            int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj planinara za obradu: ", "Nije dobro", 1, Planinari.Count());
+            var p = Planinari[broj - 1];
+            p.Sifra = AlatiPomocno.UcitajCijeliBroj("Unesite šifru Planinara("+p.Sifra+"):",
+               "Unos mora biti pozitivni cijeli  broj");
+            p.Ime = AlatiPomocno.UcitajString("Unesite ime Planinara("+p.Ime+"):", "Unos obavezan");
+            p.Prezime = AlatiPomocno.UcitajString("Unesite prezime Planinara("+p.Prezime+"):", "Unos obavezan");
+            p.Oib = AlatiPomocno.UcitajCijeliBroj("Unesite oib Planinara("+p.Oib+"):",
+                "Unos mora  biti broj od 11 znamenki");
+            p.PlaninarskoDrustvo = AlatiPomocno.UcitajString("Unesite planinarsko drustvo Planinara("+p.PlaninarskoDrustvo+")", "Unos obavezan");
         }
 
         private void UnosNovogPlaninara()
@@ -48,6 +88,9 @@ namespace MojaAplikacija
                 "Unos mora biti pozitivni cijeli  broj");
             p.Ime = AlatiPomocno.UcitajString("Unesite ime Planinara", "Unos obavezan");
             p.Prezime = AlatiPomocno.UcitajString("Unesite prezime Planinara", "Unos obavezan");
+            p.Oib = AlatiPomocno.UcitajCijeliBroj("Unesite oib Planinara",
+                "Unos mora  biti broj od 11 znamenki");
+            p.PlaninarskoDrustvo= AlatiPomocno.UcitajString("Unesite planinarsko drustvo Planinara", "Unos obavezan");
             Planinari.Add(p);
         }
 
@@ -59,7 +102,7 @@ namespace MojaAplikacija
             int b = 1;
             foreach(Planinar planinar in Planinari)
             {
-                Console.WriteLine("\t{0}. {1} {2}",b++,planinar.Ime,planinar.Prezime);
+                Console.WriteLine("\t{0}. {1} {2} {3} {4}",b++,planinar.Ime,planinar.Prezime,planinar.Oib,planinar.PlaninarskoDrustvo);
             }
             Console.WriteLine("******************************");
         }
