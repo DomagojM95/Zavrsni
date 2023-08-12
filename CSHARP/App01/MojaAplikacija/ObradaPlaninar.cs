@@ -15,6 +15,7 @@ namespace MojaAplikacija
             TestniPodaci();
         }
 
+
         public List<Planinar>Planinari { get;  }
         public void PrikaziIzbornik()
         {

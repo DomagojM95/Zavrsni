@@ -9,6 +9,7 @@ namespace MojaAplikacija
  
     internal class AlatiPomocno
     {
+      
         public static string UcitajString(string poruka, string greska)
         {
             string s = "";

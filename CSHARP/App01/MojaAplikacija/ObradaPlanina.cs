@@ -12,6 +12,7 @@ namespace MojaAplikacija
         public ObradaPlanina()
         {
             Planine = new List<Planina>();
+            TestniPodaci();
         }
         public void PrikaziIzbornik()
         {
@@ -61,7 +62,7 @@ namespace MojaAplikacija
         private void BrisanjePlanine()
         {
             PrikaziPlanine();
-            int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj smjera za brisanje: ", "nije dobro", 1, Planine.Count());
+            int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj planine za brisanje: ", "nije dobro", 1, Planine.Count());
             Planine.RemoveAt(broj - 1);
         }
 
@@ -90,7 +91,7 @@ namespace MojaAplikacija
             Planine.Add(p);
         }
 
-        private void PrikaziPlanine()
+        public void PrikaziPlanine()
         {
             Console.WriteLine();
             Console.WriteLine("***** Dostupne Planine *****");
@@ -101,6 +102,13 @@ namespace MojaAplikacija
                 Console.WriteLine("\t{0}. {1} {2} {3}", b++,planina.Ime,planina.Drzava,planina.Visina );
             }
             Console.WriteLine("******************************");
+        }
+
+        private void TestniPodaci()
+        {
+            Planine.Add(new Planina() { Ime = "papuk" });
+            Planine.Add(new Planina() { Ime = "dinara" });
+            Planine.Add(new Planina() { Ime = "velebit" });
         }
     }
 }

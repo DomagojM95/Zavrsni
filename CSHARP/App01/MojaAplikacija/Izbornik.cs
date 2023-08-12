@@ -11,10 +11,13 @@ namespace MojaAplikacija
     {
         public ObradaPlaninar ObradaPlaninar { get; set; }
         public ObradaPlanina ObradaPlanina { get; set; }
+        public ObradaIzlet ObradaIzlet { get; set; }
+
         public Izbornik() 
         {
             ObradaPlaninar =new ObradaPlaninar();
            ObradaPlanina=new ObradaPlanina();
+            ObradaIzlet=new ObradaIzlet();
             PozdravnaPoruka();
             PrikaziIzbornik();
         }
@@ -27,19 +30,25 @@ namespace MojaAplikacija
         private void PrikaziIzbornik()
         {
             Console.WriteLine("Glavni izbornik");
-            Console.WriteLine("1. Planinar");
-            Console.WriteLine("2. Izlet");
-            Console.WriteLine("3. Planina");
-            Console.WriteLine("4.Izlaz iz programa");
+            Console.WriteLine("1. Dnevnik");
+            Console.WriteLine("2. Planinar");
+            Console.WriteLine("3. Izlet");
+            Console.WriteLine("4. Planina");
+            Console.WriteLine("5.Izlaz iz programa");
 
-            switch(AlatiPomocno.UcitajBrojRaspon("Odaberite stavku izbornika: ","Odabir mora biti od 1 do 4", 1, 4))
+            switch(AlatiPomocno.UcitajBrojRaspon("Odaberite stavku izbornika: ","Odabir mora biti od 1 do 5", 1, 5))
             {
-                case 1:
+                case 2:
                     ObradaPlaninar.PrikaziIzbornik();
                     Console.WriteLine("Rad s planinarima");
                     PrikaziIzbornik();
                     break;
                 case 3:
+                    ObradaIzlet.PrikaziIzbornik();
+                    Console.WriteLine("Rad s izletima");
+                    PrikaziIzbornik();
+                    break;
+                case 4:
                     ObradaPlanina.PrikaziIzbornik();
                     Console.WriteLine("Rad s planinama");
                     PrikaziIzbornik();

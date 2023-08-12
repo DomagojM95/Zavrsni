@@ -8,8 +8,10 @@ namespace MojaAplikacija
 {
     internal class Izlet:Entitet
     {
-        public DateTime Datum { get; set; }
-        public TimeOnly Trajanje { get; set; }
+        public int Datum { get; set; }
+        public int Trajanje { get; set; }
+        public Planina Planina { get; set; }
+
 
     }
 }
