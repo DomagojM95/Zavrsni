@@ -10,14 +10,19 @@ namespace MojaAplikacija
     internal class Izbornik
     {
         public ObradaPlaninar ObradaPlaninar { get; set; }
-        public ObradaPlanina ObradaPlanina { get; set; }
+        public ObradaPlanina ObradaPlanina { get;  }
         public ObradaIzlet ObradaIzlet { get; set; }
+
+        public ObradaDnevnik ObradaDnevnik { get; set; }
+
+        
 
         public Izbornik() 
         {
             ObradaPlaninar =new ObradaPlaninar();
            ObradaPlanina=new ObradaPlanina();
-            ObradaIzlet=new ObradaIzlet();
+            ObradaIzlet=new ObradaIzlet(this);
+            ObradaDnevnik = new ObradaDnevnik(this);
             PozdravnaPoruka();
             PrikaziIzbornik();
         }
@@ -38,6 +43,11 @@ namespace MojaAplikacija
 
             switch(AlatiPomocno.UcitajBrojRaspon("Odaberite stavku izbornika: ","Odabir mora biti od 1 do 5", 1, 5))
             {
+                case 1:
+                    ObradaDnevnik.PrikaziIzbornik();
+                    Console.WriteLine("Rad s dnevnicima");
+                    PrikaziIzbornik();
+                    break;
                 case 2:
                     ObradaPlaninar.PrikaziIzbornik();
                     Console.WriteLine("Rad s planinarima");

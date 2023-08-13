@@ -10,11 +10,11 @@ namespace MojaAplikacija
     internal class ObradaIzlet
     {
         public List<Izlet> Izleti { get; }
-        private Izbornik Izbornik { get; set; }
+        private Izbornik Izbornik;
 
-        public ObradaIzlet(Izbornik izbornik) : this()
+        public ObradaIzlet(Izbornik Izbornik) : this()
         {
-            this.Izbornik = izbornik;
+            this.Izbornik = Izbornik;
         }
 
         public ObradaIzlet()
@@ -67,6 +67,22 @@ namespace MojaAplikacija
             }
         }
 
+        private void PromjenaIzleta()
+        {
+            PregledIzleta();
+            int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj izleta za obradu: ", "Nije dobro", 1, Izleti.Count());
+            var i = Izleti[broj - 1];
+            i.Sifra = AlatiPomocno.UcitajCijeliBroj("Unesite šifru izleta(" + i.Sifra + "):",
+              "Unos mora biti pozitivni cijeli  broj");
+            i.Naziv = AlatiPomocno.UcitajString("Unesite naziv izleta(" + i.Naziv + "):",
+             "Unos obavezan");
+            i.Trajanje = AlatiPomocno.UcitajCijeliBroj("Unesite trajanje(" + i.Trajanje + "):",
+               "unos mora biti u satima (npr.8)");
+            i.Datum = AlatiPomocno.UcitajCijeliBroj("Unesite datum izleta(" + i.Datum + "):",
+              "unos neka bude dan,mjesec,godina sve zajedno(10042023)");
+            i.Planina = UcitajPlaninu();
+        }
+
         private void BrisanjeIzleta()
         {
             PregledIzleta();
@@ -74,23 +90,13 @@ namespace MojaAplikacija
             Izleti.RemoveAt(broj - 1);
         }
 
-        private void PromjenaIzleta()
-        {
-            PrikaziIzbornik();
-            int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj izleta za obradu: ", "Nije dobro", 1, Izleti.Count());
-            var i = Izleti[broj - 1];
-            i.Sifra = AlatiPomocno.UcitajCijeliBroj("Unesite šifru izleta(" + i.Sifra + "):",
-              "Unos mora biti pozitivni cijeli  broj");
-            i.Trajanje =  AlatiPomocno.UcitajCijeliBroj("Unesite trajanje(" + i.Trajanje + "):",
-               "unos mora biti u satima (npr.8)");
-            i.Datum = AlatiPomocno.UcitajCijeliBroj("Unesite šifru planine(" + i.Datum + "):",
-              "unos neka bude dan,mjesec,godina sve zajedno(10042023)");
-        }
+        
 
         private void UnosnIzleta()
         {
             var i = new Izlet();
             i.Sifra = AlatiPomocno.UcitajCijeliBroj("Unesite sifru izleta", "Unos mora biti pozitivni cijeli broj");
+            i.Naziv = AlatiPomocno.UcitajString("Unesi naziv izleta", "Unos obavezan");
             i.Datum = AlatiPomocno.UcitajCijeliBroj("Unesite datum izleta", "unos neka bude dan,mjesec,godina sve zajedno(10042023)");
             i.Trajanje = AlatiPomocno.UcitajCijeliBroj("Unesite trajanje izleta","unos mora biti u satima (npr. 8 )");
             i.Planina = UcitajPlaninu();
@@ -103,11 +109,11 @@ namespace MojaAplikacija
         {
             Izbornik.ObradaPlanina.PrikaziPlanine();
             int broj = AlatiPomocno.UcitajBrojRaspon("Odaberi redni broj Planine za postavljanje na Izlet: "
-                , "nije dobro", 1, Izbornik.ObradaPlanina.Planine.Count());
+                , "Nije dobro", 1, Izbornik.ObradaPlanina.Planine.Count());
             return Izbornik.ObradaPlanina.Planine[broj - 1];
         }
 
-        private void PregledIzleta()
+        public void PregledIzleta()
         {
             Console.WriteLine();
             Console.WriteLine("***** Dostupni izleti *****");
@@ -115,7 +121,7 @@ namespace MojaAplikacija
             int b = 1;
             foreach (Izlet izlet in Izleti)
             {
-                Console.WriteLine("\t {0} {1} {2}",izlet.Datum,izlet.Trajanje,izlet.Planina.Ime);
+                Console.WriteLine("\t {0} {1} {2} {3}",b++,izlet.Datum,izlet.Trajanje,izlet.Naziv);
             }
             Console.WriteLine("******************************");
         }

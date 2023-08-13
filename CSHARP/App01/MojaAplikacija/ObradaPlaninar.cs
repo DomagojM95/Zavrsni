@@ -95,7 +95,7 @@ namespace MojaAplikacija
             Planinari.Add(p);
         }
 
-        private void PrikaziPlaninare()
+        public void PrikaziPlaninare()
         {
             Console.WriteLine();
             Console.WriteLine("***** Dostupni Planinari*****");
