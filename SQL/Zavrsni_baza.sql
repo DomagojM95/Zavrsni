@@ -27,6 +27,7 @@ go
 
   create table izlet(
 	sifra int  not null primary key identity,
+	naziv varchar(50)  not null,
 	datum datetime not null,
 	trajanje time,
 	planina int not null,
@@ -56,10 +57,10 @@ values('Papuk','Hrvatska',950),
 		('Velebit','Hrvatska',1757),
 		('Dinara','Hrvatska',1831);
 
-insert into izlet(datum,trajanje,planina)
-values('2023-04-06','06:00:00',2),
-		('2023-08-11','03:00:00',1),
-		('2023-04-06','08:00:00',3);
+insert into izlet(datum,trajanje,planina,naziv)
+values('2023-04-06','06:00:00',2,'izlet 1'),
+		('2023-08-11','03:00:00',1,'izlet 2'),
+		('2023-04-06','08:00:00',3,'izlet 3');
 		
 insert into dnevnik(naziv,planinar,izlet)
 values('Dnevnik',3,1),
