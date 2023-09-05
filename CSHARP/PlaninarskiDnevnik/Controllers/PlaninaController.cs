@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PlaninarskiDnevnik.Data;
 using PlaninarskiDnevnik.Models;
 namespace PlaninarskiDnevnik.Controllers
 {
@@ -6,19 +7,21 @@ namespace PlaninarskiDnevnik.Controllers
     [Route("Zavrsni/v1/[controller]")]
     public class PlaninaController:ControllerBase
     {
+        private readonly PlaninaContext _context;
 
-      
-        [HttpGet]
-        public IActionResult UcitajListuPlanina()
+        public PlaninaController(PlaninaContext context)
         {
-            var lista= new List<Planina>()
-            {
-                new (){Ime="Biokovo"},
-                new (){Ime="Velebit"},
-                new (){Ime="Papuk"},
-            };
-            return  new JsonResult(lista);
+            _context = context;
         }
+
+        [HttpGet]
+        public IActionResult listaPlanina()
+        {
+
+            return new JsonResult(_context.planina.ToList());
+        }
+
+
         [HttpPost]
         public IActionResult Izmjene(Planina lista) 
         {
