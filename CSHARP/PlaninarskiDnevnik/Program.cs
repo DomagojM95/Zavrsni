@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlaninarskiDnevnik.Data;
-using PlaninarskiDnevnik.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<PlaninaContext>(o =>
-o.UseSqlServer(builder.Configuration.GetConnectionString(name: "Planina")));
+o.UseSqlServer(builder.Configuration.GetConnectionString(name: "PLDNEVNIK")));
 
 var app = builder.Build();
 

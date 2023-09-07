@@ -18,15 +18,19 @@ namespace PlaninarskiDnevnik.Controllers
         public IActionResult listaPlanina()
         {
 
-            return new JsonResult(_context.planina.ToList());
+            return new JsonResult(_context.Planina.ToList());
         }
 
 
         [HttpPost]
-        public IActionResult Izmjene(Planina lista) 
+        public IActionResult Izmjene(Planina planina) 
         {
 
-            return new JsonResult(lista);
+            _context.Planina.Add(planina);
+            _context.SaveChanges();
+
+
+            return new JsonResult(planina);
         
         }
 
@@ -36,6 +40,8 @@ namespace PlaninarskiDnevnik.Controllers
         {
             return Created("Nova planina: ",planina);
         }
+
+
 
         [HttpDelete]
         [Route("{sifra:int}")]

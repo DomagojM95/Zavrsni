@@ -7,13 +7,12 @@ namespace PlaninarskiDnevnik.Data
     {
         public PlaninaContext(DbContextOptions<PlaninaContext> opcije)
 
-            : base(opcije)
-        {
+            : base(opcije){
 
 
 
         }
 
-        public DbSet<Planina> planina { get; set; }
+        public DbSet<Planina> Planina { get; set; }
     }
 }

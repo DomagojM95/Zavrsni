@@ -4,6 +4,6 @@
     {
         public string Ime { get; set; }
         public string Drzava { get; set; }
-        public int Visina { get; set; }
+        public string Visina { get; set; }
     }
 }

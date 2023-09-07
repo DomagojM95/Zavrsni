@@ -3,7 +3,6 @@ C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\Ap
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\bin\Debug\net6.0\MojaAplikacija.runtimeconfig.json
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\bin\Debug\net6.0\MojaAplikacija.dll
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\bin\Debug\net6.0\MojaAplikacija.pdb
-C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\obj\Debug\net6.0\MojaAplikacija.csproj.AssemblyReference.cache
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\obj\Debug\net6.0\MojaAplikacija.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\obj\Debug\net6.0\MojaAplikacija.AssemblyInfoInputs.cache
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\App01\MojaAplikacija\obj\Debug\net6.0\MojaAplikacija.AssemblyInfo.cs
