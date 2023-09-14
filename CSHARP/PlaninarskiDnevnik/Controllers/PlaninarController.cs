@@ -1,59 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 using PlaninarskiDnevnik.Data;
 using PlaninarskiDnevnik.Models;
+
 namespace PlaninarskiDnevnik.Controllers
 {
     [ApiController]
     [Route("Zavrsni/v1/[controller]")]
-    public class PlaninaController:ControllerBase
+    public class PlaninarController:ControllerBase
     {
         private readonly PlaninarskiDnevnikContext _context;
 
-        public PlaninaController(PlaninarskiDnevnikContext context)
+       public PlaninarController(PlaninarskiDnevnikContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public IActionResult GetPlanina()
+        public IActionResult GetPlaninar() 
         {
-
             if (!ModelState.IsValid)
             {
+
                 return BadRequest(ModelState);
             }
             try
             {
-                var planine = _context.Planina.ToList();
-                if (planine == null || planine.Count == 0)
+                var planinari = _context.Planinar.ToList();
+                if (planinari == null || planinari.Count() == 0)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(_context.Planina.ToList());
+                return new JsonResult(_context.Planinar.ToList());
             }
             catch (Exception ex)
             {
 
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
+           
 
         }
 
-
         [HttpPost]
-        public IActionResult PostPlanina(Planina planina) 
+        public IActionResult Post(Planinar planinar)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             try
             {
-                _context.Planina.Add(planina);
+                _context.Planinar.Add(planinar);
                 _context.SaveChanges();
 
-                return StatusCode(StatusCodes.Status201Created, planina);
+                return StatusCode(StatusCodes.Status201Created, planinar);
             }
             catch (Exception ex)
             {
@@ -63,46 +64,48 @@ namespace PlaninarskiDnevnik.Controllers
 
 
         }
+
+
 
         [HttpPut]
         [Route("{sifra:int}")]
-        public IActionResult PutPlanina(int sifra, Planina planina)
+        public IActionResult Put(int sifra, Planinar planinar)
         {
-
-            if (sifra <= 0|| planina==null)
+            if (sifra <= 0 || planinar == null)
             {
                 return BadRequest();
             }
+
             try
             {
-                var planinaBaza = _context.Planina.Find(sifra);
-                if (planina == null)
+                var planinarBaza = _context.Planinar.Find(sifra);
+                if (planinarBaza == null)
                 {
                     return BadRequest();
                 }
-                planinaBaza.Visina = planina.Visina;
-                planinaBaza.Drzava=planina.Drzava;
-                planinaBaza.Ime=planina.Ime;
 
-                _context.Planina.Update(planinaBaza);
+               planinarBaza.Ime= planinar.Ime;
+                planinarBaza.Prezime = planinar.Prezime;
+                planinarBaza.Oib= planinar.Oib;
+                planinarBaza.Pldrustvo= planinar.Pldrustvo;
+
+                _context.Planinar.Update(planinarBaza);
                 _context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, planinaBaza);
 
+                return StatusCode(StatusCodes.Status200OK, planinarBaza);
             }
             catch (Exception ex)
             {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex);
 
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
 
-           
+
         }
-
-
 
         [HttpDelete]
         [Route("{sifra:int}")]
-        public IActionResult Brisanje(int sifra)
+        public IActionResult Delete(int sifra)
         {
             if (sifra == 0)
             {
@@ -110,12 +113,12 @@ namespace PlaninarskiDnevnik.Controllers
             }
             try
             {
-                var planinaBaza = _context.Planina.Find(sifra);
-                if (planinaBaza == null)
+                var planinarBaza = _context.Planinar.Find(sifra);
+                if (planinarBaza == null)
                 {
                     return BadRequest();
                 }
-                _context.Planina.Remove(planinaBaza);
+                _context.Planinar.Remove(planinarBaza);
                 _context.SaveChanges();
 
                 return new JsonResult("{\"poruka\":\"Obrisano\"}");
@@ -123,11 +126,16 @@ namespace PlaninarskiDnevnik.Controllers
             catch (Exception ex)
             {
 
-                return new JsonResult("{\"poruka\":\"Ne moze se obrisati\"}");
+                return new JsonResult("{\"poruka\":\"Ne može se obrisati\"}");
+
             }
+
 
         }
 
-     
+
+
+
+
     }
 }

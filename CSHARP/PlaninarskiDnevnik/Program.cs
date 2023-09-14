@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddDbContext<PlaninaContext>(o =>
+builder.Services.AddDbContext<PlaninarskiDnevnikContext>(o =>
 o.UseSqlServer(builder.Configuration.GetConnectionString(name: "PLDNEVNIK")));
 
 var app = builder.Build();
