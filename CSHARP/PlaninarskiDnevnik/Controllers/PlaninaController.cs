@@ -123,41 +123,11 @@ namespace PlaninarskiDnevnik.Controllers
             catch (Exception ex)
             {
 
-                try
-                {
-                    SqlException sqle = (SqlException)ex;
-                    return StatusCode(StatusCodes.Status503ServiceUnavailable, sqle);
-                }
-                catch (Exception e)
-                {
-
-
-                }
-
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex);
+                return new JsonResult("{\"poruka\":\"Ne moze se obrisati\"}");
             }
 
         }
 
-        [HttpGet]
-        [Route("unosubazu")]
-
-        public string UnosUbazu()
-        {
-            Planina s;
-            for (int i = 0; i < 1000; i++)
-            {
-                s = new()
-                {
-                    Ime = "iz koda" + i,
-                    Visina="1890"+i,
-                    Drzava="hohohehe"+i
-                    
-                };
-                _context.Planina.Add(s);
-            }
-            _context.SaveChanges();
-            return "OK";
-        }
+     
     }
 }
