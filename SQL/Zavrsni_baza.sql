@@ -29,7 +29,7 @@ go
 	sifra int  not null primary key identity,
 	naziv varchar(50)  not null,
 	datum datetime not null,
-	trajanje time,
+	trajanje datetime,
 	planina int not null,
 
   );
