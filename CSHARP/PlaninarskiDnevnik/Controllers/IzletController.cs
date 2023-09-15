@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlaninarskiDnevnik.Data;
 using PlaninarskiDnevnik.Models;
+using PlaninarskiDnevnik.Models.DTO;
 
 namespace PlaninarskiDnevnik.Controllers
 {
@@ -27,12 +30,26 @@ namespace PlaninarskiDnevnik.Controllers
             }
             try
             {
-                var izlet = _context.Izlet.ToList();
+                var izlet = _context.Izlet.Include(i=>i.Planina).ToList();
                 if (izlet == null || izlet.Count == 0)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(_context.Izlet.ToList());
+
+                List<IzletDTO> vrati = new();
+
+                izlet.ForEach(i =>
+                {
+                vrati.Add(new IzletDTO{
+                    Sifra=i.Sifra,
+                    Naziv=i.Naziv,
+                    Datum=i.Datum,
+                    Trajanje=i.Trajanje,
+
+                });
+                });
+
+                return Ok(vrati);
             }
             catch (Exception ex)
             {
@@ -43,62 +60,50 @@ namespace PlaninarskiDnevnik.Controllers
         }
 
 
+
         [HttpPost]
-        public IActionResult PostIzlet(Izlet izlet)
+        public IActionResult Post(IzletDTO izletDTO)
         {
+
+
             if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (izletDTO.SifraPlanina <= 0)
             {
                 return BadRequest(ModelState);
             }
             try
             {
-                _context.Izlet.Add(izlet);
-                _context.SaveChanges();
-
-                return StatusCode(StatusCodes.Status201Created, izlet);
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
-            }
 
 
-        }
-
-        [HttpPut]
-        [Route("{sifra:int}")]
-        public IActionResult PutPlanina(int sifra, Izlet izlet)
-        {
-
-            if (sifra <= 0 || izlet == null)
-            {
-                return BadRequest();
-            }
-            try
-            {
-                var izletBaza = _context.Izlet.Find(sifra);
-                if (izlet == null)
+                var planina = _context.Planina.Find(izletDTO.SifraPlanina);
+                Izlet g = new()
                 {
-                    return BadRequest();
-                }
-                izletBaza.Planina = izlet.Planina;
-                izletBaza.Trajanje = izlet.Trajanje;
-                izletBaza.Datum = izlet.Datum;
-                izletBaza.Naziv = izlet.Naziv;
-             
+                     Sifra=izletDTO.Sifra,
+                   Naziv=izletDTO.Naziv,
+                   Datum=izletDTO.Datum,
+                   Trajanje=izletDTO.Trajanje,
+                   
+                   Planina=planina
+                   
+                };
 
-                _context.Izlet.Update(izletBaza);
+                _context.Izlet.Add(g);
                 _context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, izletBaza);
 
+                izletDTO.Sifra = g.Sifra;
+
+               
+                return Ok(izletDTO);
             }
+
             catch (Exception ex)
             {
-
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
-            }
 
+            }
 
         }
 
