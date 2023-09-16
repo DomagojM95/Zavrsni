@@ -9,6 +9,8 @@
 
         public DateTime? Trajanje { get; set; }
 
+        public string? Planina { get; set; }
+
         public int SifraPlanina { get; set; }
 
     }
