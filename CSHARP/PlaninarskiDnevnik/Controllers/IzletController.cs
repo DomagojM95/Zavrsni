@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using PlaninarskiDnevnik.Data;
 using PlaninarskiDnevnik.Models;
 using PlaninarskiDnevnik.Models.DTO;
@@ -13,53 +14,61 @@ namespace PlaninarskiDnevnik.Controllers
     public class IzletController:ControllerBase
     {
         private readonly PlaninarskiDnevnikContext _context;    
-        
+        private readonly ILogger _logger;
 
 
-        public IzletController(PlaninarskiDnevnikContext context)
+        public IzletController(PlaninarskiDnevnikContext context,
+            ILogger<IzletController> logger)
         {
             _context = context;
-           
+           _logger = logger;
         }
 
         [HttpGet]
-        public IActionResult GetIzlet()
+        public IActionResult Get()
         {
+            _logger.LogInformation("Dohvaćam Izlete");
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
             try
             {
-                var izlet = _context.Izlet.Include(i=>i.Planina).ToList();
-                if (izlet == null || izlet.Count == 0)
+                var izleti = _context.Izlet
+                    .Include(p => p.Planina).ToList();
+
+                if (izleti == null || izleti.Count == 0)
                 {
                     return new EmptyResult();
                 }
 
                 List<IzletDTO> vrati = new();
 
-                izlet.ForEach(i =>
+                izleti.ForEach(i =>
                 {
-                vrati.Add(new IzletDTO{
-                    Sifra=i.Sifra,
-                    Naziv=i.Naziv,
-                    Datum=i.Datum,
-                    Trajanje=i.Trajanje,
-                    Planina=i.Planina.Ime
-                    
+                    vrati.Add(new IzletDTO()
+                    {
+                        Sifra = i.Sifra,
+                        Naziv = i.Naziv,
+                        Trajanje=i.Trajanje,
+                        Datum=i.Datum,
+                       SifraPlanina=i.Planina.Sifra,
+                       Planina=i.Planina.Ime
 
+                        
+                    });
                 });
-                });
-
                 return Ok(vrati);
             }
             catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+                return StatusCode(
+                    StatusCodes.Status503ServiceUnavailable,
+                    ex);
             }
+
 
         }
 
@@ -206,10 +215,9 @@ namespace PlaninarskiDnevnik.Controllers
             }
         }
 
-
         [HttpGet]
-        [Route("{sifra:int}/izleti")]
-        public IActionResult GetIzleti(int sifra)
+        [Route("{sifra:int}/planine")]
+        public IActionResult GetPlanine(int sifra)
         {
             if (!ModelState.IsValid)
             {
@@ -224,31 +232,36 @@ namespace PlaninarskiDnevnik.Controllers
             try
             {
                 var izlet = _context.Izlet
-                    .Include(p =>p.Planina)
-                    .FirstOrDefault(i => i.Sifra == sifra);
+                    .Include(p => p.Planina)
+                    .FirstOrDefault(p => p.Sifra == sifra);
 
                 if (izlet == null)
                 {
                     return BadRequest();
                 }
 
-                if (izlet.Planina == null || izlet.Planina.Count==0)
+
+                if (izlet.Planine == null || izlet.Planine.Count == 0)
                 {
                     return new EmptyResult();
                 }
 
-                List<PolaznikDTO> vrati = new();
-                grupa.Polaznici.ForEach(p =>
+                List<PlaninaDTO> vrati = new();
+                izlet.Planine.ForEach(p =>
                 {
-                    vrati.Add(new PolaznikDTO()
+                    vrati.Add(new PlaninaDTO()
                     {
-                        Sifra = p.Sifra,
-                        Ime = p.Ime,
-                        Prezime = p.Prezime,
-                        Oib = p.Oib,
-                        Email = p.Email
+                        Sifra=p.Sifra,
+                        Ime=p.Ime,
+                        Drzava=p.Drzava,
+                        Visina=p.Visina,
+                        
+
                     });
+
                 });
+
+
                 return Ok(vrati);
             }
             catch (Exception ex)
@@ -260,4 +273,9 @@ namespace PlaninarskiDnevnik.Controllers
 
 
         }
+
+
+
+
+    }
 }

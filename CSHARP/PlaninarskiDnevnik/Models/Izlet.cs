@@ -16,7 +16,7 @@ namespace PlaninarskiDnevnik.Models
         [ForeignKey("planina")]
         public Planina Planina { get; set; }
 
-        public List<Planina> PlaninaList { get; set; }
+        public List<Planina> Planine { get; set; }
 
         
 
