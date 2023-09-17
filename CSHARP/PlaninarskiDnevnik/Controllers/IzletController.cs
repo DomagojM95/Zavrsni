@@ -37,7 +37,9 @@ namespace PlaninarskiDnevnik.Controllers
             try
             {
                 var izleti = _context.Izlet
-                    .Include(p => p.Planina).ToList();
+                  .Include(i=>i.Planina)
+                  .Include(i=>i.Planine)
+                    .ToList();
 
                 if (izleti == null || izleti.Count == 0)
                 {
@@ -251,11 +253,11 @@ namespace PlaninarskiDnevnik.Controllers
                 {
                     vrati.Add(new PlaninaDTO()
                     {
-                        Sifra=p.Sifra,
-                        Ime=p.Ime,
-                        Drzava=p.Drzava,
-                        Visina=p.Visina,
-                        
+                        Sifra = p.Sifra,
+                        Ime = p.Ime,
+                        Drzava = p.Drzava,
+                        Visina = p.Visina,
+
 
                     });
 
