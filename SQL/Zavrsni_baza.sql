@@ -22,6 +22,7 @@ go
 	prezime varchar(50) not null,
 	oib varchar(50)not null,
 	pldrustvo varchar(50)not null,
+	dnevnik int
 
   );
 
@@ -31,6 +32,7 @@ go
 	datum datetime not null,
 	trajanje datetime,
 	planina int not null,
+	dnevnik int
 
   );
 
@@ -42,8 +44,8 @@ go
 
   );
 
-  alter table dnevnik add foreign key(planinar) references planinar(sifra);
-  alter table dnevnik add foreign key(izlet) references izlet(sifra); 
+  alter table planinar add foreign key(dnevnik) references dnevnik(sifra);
+  alter table izlet add foreign key(dnevnik) references dnevnik(sifra); 
   alter table izlet add foreign key (planina) references planina(sifra);
 
 insert into planinar(ime,prezime,oib,pldrustvo)

@@ -38,7 +38,7 @@ namespace PlaninarskiDnevnik.Controllers
             {
                 var izleti = _context.Izlet
                   .Include(i=>i.Planina)
-                  .Include(i=>i.Planine)
+                  
                     .ToList();
 
                 if (izleti == null || izleti.Count == 0)
@@ -217,64 +217,6 @@ namespace PlaninarskiDnevnik.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{sifra:int}/planine")]
-        public IActionResult GetPlanine(int sifra)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            if (sifra <= 0)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                var izlet = _context.Izlet
-                    .Include(p => p.Planina)
-                    .FirstOrDefault(p => p.Sifra == sifra);
-
-                if (izlet == null)
-                {
-                    return BadRequest();
-                }
-
-
-                if (izlet.Planine == null || izlet.Planine.Count == 0)
-                {
-                    return new EmptyResult();
-                }
-
-                List<PlaninaDTO> vrati = new();
-                izlet.Planine.ForEach(p =>
-                {
-                    vrati.Add(new PlaninaDTO()
-                    {
-                        Sifra = p.Sifra,
-                        Ime = p.Ime,
-                        Drzava = p.Drzava,
-                        Visina = p.Visina,
-
-
-                    });
-
-                });
-
-
-                return Ok(vrati);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(
-                        StatusCodes.Status503ServiceUnavailable,
-                        ex.Message);
-            }
-
-
-        }
 
 
 

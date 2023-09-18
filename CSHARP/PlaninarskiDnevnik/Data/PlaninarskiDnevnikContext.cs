@@ -26,7 +26,7 @@ namespace PlaninarskiDnevnik.Data
             modelBuilder.Entity<Izlet>().HasOne(p => p.Planina);
             modelBuilder.Entity<Dnevnik>().HasOne(i => i.Izlet);
             modelBuilder.Entity<Dnevnik>().HasOne(z => z.Planinar);
-            modelBuilder.Entity<Izlet>().HasMany(k => k.Planine);
+            //modelBuilder.Entity<Izlet>().HasMany(k => k.Planine);
 
 
 
