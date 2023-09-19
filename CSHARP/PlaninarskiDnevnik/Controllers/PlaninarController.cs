@@ -41,26 +41,27 @@ namespace PlaninarskiDnevnik.Controllers
 
         }
 
+
         [HttpPost]
         public IActionResult Post(Planinar planinar)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
             try
             {
                 _context.Planinar.Add(planinar);
                 _context.SaveChanges();
-
                 return StatusCode(StatusCodes.Status201Created, planinar);
             }
             catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                                   ex.Message);
             }
+
 
 
         }
@@ -132,6 +133,7 @@ namespace PlaninarskiDnevnik.Controllers
 
 
         }
+
 
 
 

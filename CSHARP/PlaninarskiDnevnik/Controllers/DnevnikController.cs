@@ -7,16 +7,40 @@ using PlaninarskiDnevnik.Models.DTO;
 
 namespace PlaninarskiDnevnik.Controllers
 {
+
+    /// <summary>
+    /// Namjenjeno za CRUD operacije nad Dnevnikom
+    /// </summary>
     [ApiController]
     [Route("Zavrsni/v1/[controller]")]
-    public class DnevnikController:ControllerBase
+    public class DnevnikController : ControllerBase
     {
         private readonly PlaninarskiDnevnikContext _context;
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="context"></param>
         public DnevnikController(PlaninarskiDnevnikContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Dohvaca sve dnevnike iz baze
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        /// 
+        /// 
+        /// Zavrsni/v1/Dnevnik
+        /// 
+        /// 
+        /// </remarks>
+        /// 
+        /// <returns>Dnevnici u bazi</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
         public IActionResult Get()
@@ -68,6 +92,21 @@ namespace PlaninarskiDnevnik.Controllers
         }
 
 
+        /// <summary>
+        /// Dodaje dnevnike u bazu
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    POST Zavrsni/v1/Dnevnik
+        ///    {Naziv:""}
+        ///
+        /// </remarks>
+        /// <returns>Kreirani dnevnik u bazi s svim podacima</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
 
         [HttpPost]
         public IActionResult Post(DnevnikDTO dnevnikDTO)
@@ -109,8 +148,8 @@ namespace PlaninarskiDnevnik.Controllers
                 {
                     Naziv = dnevnikDTO.Naziv,
                     Izlet = izlet,
-                    Planinar=planinar,
-                  
+                    Planinar = planinar,
+
                 };
 
                 _context.Dnevnik.Add(d);
@@ -132,6 +171,31 @@ namespace PlaninarskiDnevnik.Controllers
             }
 
         }
+
+
+        /// <summary>
+        /// Mijenja podatke postojećeg dnevnika u bazi
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    PUT Zavrsni/v1//1
+        ///
+        /// {
+        ///   "sifra": 0,
+        ///   "ime": "string",
+        ///   "prezime": "string",
+        ///   "oib": "string",
+        ///   "email": "string"
+        /// }
+        ///
+        /// </remarks>
+        /// <param name="sifra">Šifra dnevnika koji se mijenja</param>  
+        /// <returns>Svi poslani podaci od dnevnika</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="204">Nema u bazi dnevnika kojeg želimo promijeniti</response>
+        /// <response code="415">Nismo poslali JSON</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
 
         [HttpPut]
@@ -172,7 +236,7 @@ namespace PlaninarskiDnevnik.Controllers
 
                 dnevnik.Naziv = dnevnikDTO.Naziv;
                 dnevnik.Planinar = planinar;
-                dnevnik.Izlet= izlet;
+                dnevnik.Izlet = izlet;
 
                 _context.Dnevnik.Update(dnevnik);
                 _context.SaveChanges();
@@ -192,6 +256,22 @@ namespace PlaninarskiDnevnik.Controllers
 
 
         }
+
+        /// <summary>
+        /// Briše dnevnik iz baze
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    DELETE Zavrsni/v1/Dnevnik/1
+        ///    
+        /// </remarks>
+        /// <param name="sifra">Šifra dnevnika koji se briše</param>  
+        /// <returns>Odgovor da li je obrisano ili ne</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="204">Nema u bazi dnevnika kojeg želimo obrisati</response>
+        /// <response code="415">Nismo poslali JSON</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response>
 
         [HttpDelete]
         [Route("{sifra:int}")]

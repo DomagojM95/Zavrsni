@@ -11,16 +11,15 @@ namespace PlaninarskiDnevnik.Models
         public DateTime? Datum { get; set; }
 
         public DateTime? Trajanje { get; set; }
-        [ForeignKey("dnevnik")]
-        public Dnevnik Dnevnik { get; set; }
 
 
         [ForeignKey("planina")]
         public Planina Planina { get; set; }
 
+      
 
-        
-        
+
+
 
 
 
