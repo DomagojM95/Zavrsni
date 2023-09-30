@@ -41,22 +41,28 @@ o.UseSqlServer(builder.Configuration.GetConnectionString(name: "PLDNEVNIK")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger(opcije =>
     {
         opcije.SerializeAsV2 = true;
     });
     app.UseSwaggerUI(opcije =>
     {
-        opcije.ConfigObject.AdditionalItems.Add("reguestSnippersEnabled", true);
+      opcije.ConfigObject.AdditionalItems.Add("reguestSnippersEnabled", true);
     });
-}
+//}
 
 app.UseHttpsRedirection();
 
 
 
+
+
 app.MapControllers();
 
+app.UseDefaultFiles();
+
+app.UseDeveloperExceptionPage();
+app.MapFallbackToFile("index.html");
 app.Run();

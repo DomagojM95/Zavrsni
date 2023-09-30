@@ -1,0 +1,357 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlaninarskiDnevnik</name>
+    </assembly>
+    <members>
+        <member name="T:PlaninarskiDnevnik.Controllers.DnevnikController">
+            <summary>
+            Namjenjeno za CRUD operacije nad Dnevnikom
+            </summary>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.DnevnikController.#ctor(PlaninarskiDnevnik.Data.PlaninarskiDnevnikContext)">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.DnevnikController.Get">
+            <summary>
+            Dohvaca sve dnevnike iz baze
+            </summary>
+            <remarks>
+            Primjer upita:
+            
+            
+            Zavrsni/v1/Dnevnik
+            
+            
+            </remarks>
+            
+            <returns>Dnevnici u bazi</returns>
+            <response code="200">Sve je u redu</response>
+            <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+            <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.DnevnikController.Post(PlaninarskiDnevnik.Models.DTO.DnevnikDTO)">
+             <summary>
+             Dodaje dnevnike u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST Zavrsni/v1/Dnevnik
+                {Naziv:""}
+            
+             </remarks>
+             <returns>Kreirani dnevnik u bazi s svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.DnevnikController.Put(System.Int32,PlaninarskiDnevnik.Models.DTO.DnevnikDTO)">
+             <summary>
+             Mijenja podatke postojećeg dnevnika u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT Zavrsni/v1//1
+            
+             {
+               "sifra": 0,
+               "ime": "string",
+               "prezime": "string",
+               "oib": "string",
+               "email": "string"
+             }
+            
+             </remarks>
+             <param name="sifra">Šifra dnevnika koji se mijenja</param>  
+             <returns>Svi poslani podaci od dnevnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi dnevnika kojeg želimo promijeniti</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.DnevnikController.Delete(System.Int32)">
+             <summary>
+             Briše dnevnik iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE Zavrsni/v1/Dnevnik/1
+                
+             </remarks>
+             <param name="sifra">Šifra dnevnika koji se briše</param>  
+             <returns>Odgovor da li je obrisano ili ne</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi dnevnika kojeg želimo obrisati</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response>
+        </member>
+        <member name="T:PlaninarskiDnevnik.Controllers.IzletController">
+            <summary>
+            Namjenjeno za CRUD operacije nad Izletom
+            </summary>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.IzletController.#ctor(PlaninarskiDnevnik.Data.PlaninarskiDnevnikContext)">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.IzletController.GetIzlet">
+            <summary>
+            Dohvaca sve Izlete iz baze
+            </summary>
+            <remarks>
+            Primjer upita:
+            
+            
+            Zavrsni/v1/Izlet
+            
+            
+            </remarks>
+            
+            <returns>Izleti u bazi</returns>
+            <response code="200">Sve je u redu</response>
+            <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+            <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.IzletController.PostIzlet(PlaninarskiDnevnik.Models.DTO.IzletDTO)">
+             <summary>
+             Dodaje izlete u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST Zavrsni/v1/Izlet
+                {Naziv:""}
+            
+             </remarks>
+             <returns>Kreirani izlet u bazi s svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.IzletController.Put(System.Int32,PlaninarskiDnevnik.Models.DTO.IzletDTO)">
+             <summary>
+             Mijenja podatke postojećeg izleta u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT Zavrsni/v1/izlet/1
+            
+             {
+               "sifra": 0,
+               "naziv": "string",
+               "prezime": "string",
+               "oib": "string",
+               "email": "string"
+             }
+            
+             </remarks>
+             <param name="sifra">Šifra izleta koji se mijenja</param>  
+             <returns>Svi poslani podaci od dnevnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi dnevnika kojeg želimo promijeniti</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.IzletController.Delete(System.Int32)">
+             <summary>
+             Briše izlete iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE Zavrsni/v1/izlet/1
+                
+             </remarks>
+             <param name="sifra">Šifra izleta koji se briše</param>  
+             <returns>Odgovor da li je obrisano ili ne</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi dnevnika kojeg želimo obrisati</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response>
+        </member>
+        <member name="T:PlaninarskiDnevnik.Controllers.PlaninaController">
+            <summary>
+            Namjenjeno za CRUD operacije nad Planinom
+            </summary>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninaController.#ctor(PlaninarskiDnevnik.Data.PlaninarskiDnevnikContext)">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninaController.GetPlanina">
+            <summary>
+            Dohvaca sve Planine iz baze
+            </summary>
+            <remarks>
+            Primjer upita:
+            
+            
+            Zavrsni/v1/Planina
+            
+            
+            </remarks>
+            
+            <returns>planina u bazi</returns>
+            <response code="200">Sve je u redu</response>
+            <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+            <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninaController.PostPlanina(PlaninarskiDnevnik.Models.Planina)">
+             <summary>
+             Dodaje planine u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST Zavrsni/v1/Planina
+                {Naziv:""}
+            
+             </remarks>
+             <returns>Kreirani planina u bazi s svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninaController.PutPlanina(System.Int32,PlaninarskiDnevnik.Models.Planina)">
+             <summary>
+             Mijenja podatke postojeće Planine u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT Zavrsni/v1/planina/1
+            
+             {
+               "sifra": 0,
+               "naziv": "string",
+               "prezime": "string",
+               "oib": "string",
+               "email": "string"
+             }
+            
+             </remarks>
+             <param name="sifra">Šifra planine koja se mijenja</param>  
+             <returns>Svi poslani podaci od planine</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi planine kojeg želimo promijeniti</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninaController.Brisanje(System.Int32)">
+             <summary>
+             Briše izlete iz planine
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE Zavrsni/v1/planina/1
+                
+             </remarks>
+             <param name="sifra">Šifra planine koja se briše</param>  
+             <returns>Odgovor da li je obrisano ili ne</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi planine koje želimo obrisati</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response>
+        </member>
+        <member name="T:PlaninarskiDnevnik.Controllers.PlaninarController">
+            <summary>
+            Namjenjeno za CRUD operacije nad Planinarom
+            </summary>
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninarController.#ctor(PlaninarskiDnevnik.Data.PlaninarskiDnevnikContext)">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninarController.GetPlaninar">
+            <summary>
+            Dohvaca svih Planinara iz baze
+            </summary>
+            <remarks>
+            Primjer upita:
+            
+            
+            Zavrsni/v1/Planinar
+            
+            
+            </remarks>
+            
+            <returns>planinar u bazi</returns>
+            <response code="200">Sve je u redu</response>
+            <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+            <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninarController.Post(PlaninarskiDnevnik.Models.Planinar)">
+             <summary>
+             Dodaje planinara u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST Zavrsni/v1/Planinar
+                {Naziv:""}
+            
+             </remarks>
+             <returns>Kreiran planinar u bazi s svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninarController.Put(System.Int32,PlaninarskiDnevnik.Models.Planinar)">
+             <summary>
+             Mijenja podatke postojećeg planinara u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT Zavrsni/v1/planinar/1
+            
+             {
+               "sifra": 0,
+               "naziv": "string",
+               "prezime": "string",
+               "oib": "string",
+               "email": "string"
+             }
+            
+             </remarks>
+             <param name="sifra">Šifra planinara koja se mijenja</param>  
+             <returns>Svi poslani podaci od planine</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi planinara kojeg želimo promijeniti</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:PlaninarskiDnevnik.Controllers.PlaninarController.Delete(System.Int32)">
+             <summary>
+             Briše planinara iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE Zavrsni/v1/planinar/1
+                
+             </remarks>
+             <param name="sifra">Šifra planinara koji se briše</param>  
+             <returns>Odgovor da li je obrisano ili ne</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="204">Nema u bazi planinara kojeg želimo obrisati</response>
+             <response code="415">Nismo poslali JSON</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response>
+        </member>
+    </members>
+</doc>
