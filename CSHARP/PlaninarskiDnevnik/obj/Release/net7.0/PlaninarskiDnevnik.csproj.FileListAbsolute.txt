@@ -71,3 +71,4 @@ C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\Pl
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\obj\Release\net7.0\PlaninarskiDnevnik.pdb
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\obj\Release\net7.0\PlaninarskiDnevnik.genruntimeconfig.cache
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\obj\Release\net7.0\ref\PlaninarskiDnevnik.dll
+C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\bin\Release\net7.0\PlaninarskiDnevnik.staticwebassets.runtime.json

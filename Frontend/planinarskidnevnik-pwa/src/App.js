@@ -1,11 +1,21 @@
 import React from 'react';
 
 import './App.css';
+import { Route } from 'react-router-dom';
+import Pocetna from './components/pocetna.components';
 
-function App() {
-  return (
-    <p>Hello</p>
+export default function App(){
+
+  return(
+
+    <Routes>
+      <Route path='/' element={Pocetna/>}/>
+      </Route>
+
+    </Routes>
+
   );
+
 }
 
-export default App;
+
