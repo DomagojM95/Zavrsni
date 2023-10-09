@@ -69,19 +69,19 @@
       "PackagePath": "staticwebassets\\static\\js\\main.4099940d.js.map"
     },
     {
-      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.PlaninarskiDnevnik.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.PlaninarskiDnevnik.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.build.PlaninarskiDnevnik.props",
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.PlaninarskiDnevnik.props",
       "PackagePath": "build\\PlaninarskiDnevnik.props"
     },
     {
-      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.PlaninarskiDnevnik.props",
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.PlaninarskiDnevnik.props",
       "PackagePath": "buildMultiTargeting\\PlaninarskiDnevnik.props"
     },
     {
-      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildTransitive.PlaninarskiDnevnik.props",
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.PlaninarskiDnevnik.props",
       "PackagePath": "buildTransitive\\PlaninarskiDnevnik.props"
     }
   ],

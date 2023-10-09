@@ -71,3 +71,4 @@ C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\Pl
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\bin\Debug\net7.0\PlaninarskiDnevnik.xml
 C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\obj\Debug\net7.0\PlaninarskiDnevnik.xml
+C:\Users\38599\OneDrive\Documents\SQL Server Management Studio\Zavrsni\CSHARP\PlaninarskiDnevnik\bin\Debug\net7.0\PlaninarskiDnevnik.staticwebassets.runtime.json
