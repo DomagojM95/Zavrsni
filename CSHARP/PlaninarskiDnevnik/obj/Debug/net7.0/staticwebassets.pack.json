@@ -41,12 +41,12 @@
       "PackagePath": "staticwebassets\\service-worker.js.map"
     },
     {
-      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\css\\main.073c9b0a.css",
-      "PackagePath": "staticwebassets\\static\\css\\main.073c9b0a.css"
+      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\css\\main.4dd8dc0a.css",
+      "PackagePath": "staticwebassets\\static\\css\\main.4dd8dc0a.css"
     },
     {
-      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\css\\main.073c9b0a.css.map",
-      "PackagePath": "staticwebassets\\static\\css\\main.073c9b0a.css.map"
+      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\css\\main.4dd8dc0a.css.map",
+      "PackagePath": "staticwebassets\\static\\css\\main.4dd8dc0a.css.map"
     },
     {
       "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\787.b69b3c92.chunk.js",
@@ -57,16 +57,20 @@
       "PackagePath": "staticwebassets\\static\\js\\787.b69b3c92.chunk.js.map"
     },
     {
-      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.4099940d.js",
-      "PackagePath": "staticwebassets\\static\\js\\main.4099940d.js"
+      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.d78a40a9.js",
+      "PackagePath": "staticwebassets\\static\\js\\main.d78a40a9.js"
     },
     {
-      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.4099940d.js.LICENSE.txt",
-      "PackagePath": "staticwebassets\\static\\js\\main.4099940d.js.LICENSE.txt"
+      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.d78a40a9.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\static\\js\\main.d78a40a9.js.LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.4099940d.js.map",
-      "PackagePath": "staticwebassets\\static\\js\\main.4099940d.js.map"
+      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.d78a40a9.js.map",
+      "PackagePath": "staticwebassets\\static\\js\\main.d78a40a9.js.map"
+    },
+    {
+      "Id": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\media\\logo.103b5fa18196d5665a7e12318285c916.svg",
+      "PackagePath": "staticwebassets\\static\\media\\logo.103b5fa18196d5665a7e12318285c916.svg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.PlaninarskiDnevnik.Microsoft.AspNetCore.StaticWebAssets.props",

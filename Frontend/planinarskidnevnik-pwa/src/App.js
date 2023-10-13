@@ -13,7 +13,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Pocetna />} />
         <Route path='/nadzornaploca' element={<NadzornaPloca />} />
-        <Route path='/planinari' element={<Planinari />} />
+        <Route path='/planinar' element={<Planinari />} />
       </Routes>
      
     </Router>

@@ -35,6 +35,14 @@ builder.Services.AddSwaggerGen(sgo => { // sgo je instanca klase SwaggerGenOptio
 });
 
 
+builder.Services.AddCors(opcije =>
+{
+    opcije.AddPolicy("CorsPolicy",
+        builder =>
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
+
 builder.Services.AddDbContext<PlaninarskiDnevnikContext>(o =>
 o.UseSqlServer(builder.Configuration.GetConnectionString(name: "PLDNEVNIK")));
 
@@ -66,3 +74,4 @@ app.UseDeveloperExceptionPage();
 app.MapFallbackToFile("index.html");
 
 app.Run();
+

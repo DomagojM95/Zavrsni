@@ -8,7 +8,7 @@ export default class Pocetna extends Component{
     render(){
         return (
             <Container>
-                <p>Dobrodošli na Edunova aplikaciju!</p>
+                <p>Dobrodošli na Planinarski Dnevnik aplikaciju!</p>
             </Container>
 
 
