@@ -30,7 +30,7 @@ export default class Izbornik extends Component{
                     <NavDropdown.Item href="/dnevnik">
                       Dnevnik
                     </NavDropdown.Item>
-                    <NavDropdown.Item target="_blank" href="/swagger/index.html">
+                    <NavDropdown.Item target="_blank" href="http://domagojm95-001-site1.atempurl.com/swagger/index.html">
                       Swagger
                     </NavDropdown.Item>
                   </NavDropdown>
