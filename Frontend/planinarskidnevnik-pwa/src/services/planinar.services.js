@@ -7,6 +7,11 @@ class PlaninarDataService{
         return await http.get('/Planinar');
     }
 
+    async getBySifra(sifra) {
+        return await http.get('/smjer/' + sifra);
+      }
+
+
     async delete(sifra){
         const odgovor = await http.delete('/Planinar/' + sifra)
         .then(response => {
@@ -17,6 +22,20 @@ class PlaninarDataService{
         });
 
         return odgovor;
+    }
+
+    async post(planinar){
+        //console.log(smjer);
+        const odgovor = await http.post('/planinar',planinar)
+           .then(response => {
+             return {ok:true, poruka: 'Unio planinara'}; // return u odgovor
+           })
+           .catch(error => {
+            //console.log(error.response);
+             return {ok:false, poruka: error.response.data}; // return u odgovor
+           });
+     
+           return odgovor;
     }
 
 }

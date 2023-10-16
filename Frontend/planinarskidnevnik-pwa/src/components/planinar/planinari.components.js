@@ -74,8 +74,7 @@ export default class Planinari extends Component{
                         <td>{planinar.ime}</td>
                         <td>{planinar.prezime}</td>
                         <td>{planinar.PlDrustvo}</td>
-                        
-                        <td>{planinar.Oib}</td>
+                        <td>{planinar.oib}</td>
                       
                        
                         <td>
