@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 
 
-export default class DodajPlaninara extends Component {
+export default class DodajPlaninar extends Component {
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ export default class DodajPlaninara extends Component {
     const odgovor = await PlaninarDataService.post(planinar);
     if(odgovor.ok){
       // routing na smjerovi
-      window.location.href='/planinar';
+      window.location.href='/planinari';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -36,7 +36,7 @@ export default class DodajPlaninara extends Component {
       ime: podaci.get('ime'),
       prezime: podaci.get('prezime'),
       oib: podaci.get('oib'),
-      pldrustvo: podaci.get('PlDrustvo')
+      pldrustvo: podaci.get('pldrustvo')
     });
     
   }
@@ -59,24 +59,23 @@ export default class DodajPlaninara extends Component {
             <Form.Control type="text" name="prezime" placeholder="Horvat" required />
           </Form.Group>
 
-
-          <Form.Group className="mb-3" controlId="Pldrustvo">
-            <Form.Label>pldrustvo</Form.Label>
-            <Form.Control type="text" name="Pldrustvo" placeholder="Pd dakovo" />
-          </Form.Group>
-
           <Form.Group className="mb-3" controlId="oib">
             <Form.Label>OIB</Form.Label>
             <Form.Control type="text" name="oib" placeholder="" />
           </Form.Group>
 
+          <Form.Group className="mb-3" controlId="pldrustvo">
+            <Form.Label>PlDrustvo</Form.Label>
+            <Form.Control type="text" name="pldrustvo" placeholder="PD Đakovo" />
+          </Form.Group>
+
           <Row>
             <Col>
-              <Link className="btn btn-danger gumb" to={`/planinar`}>Odustani</Link>
+              <Link className="btn btn-danger gumb" to={`/planinari`}>Odustani</Link>
             </Col>
             <Col>
             <Button variant="primary" className="gumb" type="submit">
-              Dodaj Planinara
+              Dodaj planinara
             </Button>
             </Col>
           </Row>
