@@ -1,21 +1,21 @@
 import http from '../http-common';
 
-class PlaninarDataService {
+class PlaninaDataService {
   async getAll() {
-    return await http.get('/planinar');
+    return await http.get('/planina');
   }
 
 
 
   async getBySifra(sifra) {
-    return await http.get('/planinar/' + sifra);
+    return await http.get('/planina/' + sifra);
   }
 
-  async post(planinar){
+  async post(planina){
     //console.log(smjer);
-    const odgovor = await http.post('/planinar',planinar)
+    const odgovor = await http.post('/planina',planina)
        .then(response => {
-         return {ok:true, poruka: 'Unio planinara'}; // return u odgovor
+         return {ok:true, poruka: 'Unio planinu'}; // return u odgovor
        })
        .catch(error => {
         console.log(error.response);
@@ -25,10 +25,10 @@ class PlaninarDataService {
        return odgovor;
   }
 
-  async put(sifra,planinar){
-    const odgovor = await http.put('/planinar/' + sifra,planinar)
+  async put(sifra,planina){
+    const odgovor = await http.put('/planina/' + sifra,planina)
        .then(response => {
-         return {ok:true, poruka: 'Promjenio planinara'}; // return u odgovor
+         return {ok:true, poruka: 'Promjenio planinu'}; // return u odgovor
        })
        .catch(error => {
         console.log(error.response);
@@ -41,7 +41,7 @@ class PlaninarDataService {
 
   async delete(sifra){
     
-    const odgovor = await http.delete('/planinar/' + sifra)
+    const odgovor = await http.delete('/planina/' + sifra)
        .then(response => {
          return {ok:true, poruka: 'Obrisao uspješno'};
        })
@@ -54,12 +54,12 @@ class PlaninarDataService {
      }
 
 
-     async traziPlaninar(uvjet) {
+     async traziPlanina(uvjet) {
       console.log('Tražim s: ' + uvjet);
-      return await http.get('/planinar/trazi/'+uvjet);
+      return await http.get('/planina/trazi/'+uvjet);
     }
      
  
 }
 
-export default new PlaninarDataService();
+export default new PlaninaDataService();

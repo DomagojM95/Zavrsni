@@ -67,9 +67,12 @@ export default class Planine extends Component {
 
               <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                  <Card.Title>{p.ime} {p.prezime}</Card.Title>
+                  <Card.Title>{p.ime} </Card.Title>
                   <Card.Text>
-                    {p.email}
+                    {p.visina} m
+                  </Card.Text>
+                  <Card.Text>
+                    {p.drzava}
                   </Card.Text>
                   <Row>
                       <Col>

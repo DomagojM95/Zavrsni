@@ -19,7 +19,7 @@ export default class DodajPlanina extends Component {
     const odgovor = await PlaninaDataService.post(izlet);
     if(odgovor.ok){
       // routing na smjerovi
-      window.location.href='/planine';
+      window.location.href='/planina';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -61,7 +61,7 @@ export default class DodajPlanina extends Component {
 
 
           <Form.Group className="mb-3" controlId="visina">
-            <Form.Label>Visina</Form.Label>
+            <Form.Label>visina</Form.Label>
             <Form.Control type="number" name="visina" placeholder="89898" />
           </Form.Group>
 

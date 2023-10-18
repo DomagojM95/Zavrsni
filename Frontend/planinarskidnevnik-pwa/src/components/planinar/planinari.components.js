@@ -46,7 +46,7 @@ export default class Planinari extends Component {
     
     const odgovor = await PlaninarDataService.delete(sifra);
     if(odgovor.ok){
-     this.dohvatiPlaninar();
+     this.dohvatiPlaninari();
     }else{
      // alert(odgovor.poruka);
       this.otvoriModal();
@@ -70,7 +70,13 @@ export default class Planinari extends Component {
                   <Card.Title>{p.ime} {p.prezime}</Card.Title>
                   <Card.Text>
                     {p.oib}
+                    
                   </Card.Text>
+                  <Card.Text>
+                    {p.pldrustvo}
+                    
+                  </Card.Text>
+
                   <Row>
                       <Col>
                       <Link className="btn btn-primary gumb" to={`/planinari/${p.sifra}`}><FaEdit /></Link>

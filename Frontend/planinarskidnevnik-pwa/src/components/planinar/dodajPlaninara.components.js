@@ -19,7 +19,7 @@ export default class DodajPlaninar extends Component {
     const odgovor = await PlaninarDataService.post(planinar);
     if(odgovor.ok){
       // routing na smjerovi
-      window.location.href='/planinari';
+      window.location.href='/planinar';
     }else{
       // pokaži grešku
       console.log(odgovor);

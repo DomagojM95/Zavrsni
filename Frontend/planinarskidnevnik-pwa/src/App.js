@@ -10,6 +10,9 @@ import DodajPlanina from './components/planina/dodajPlanina.components';
 import PromjeniPlanina from './components/planina/promjeniPlanina.components';
 import DodajPlaninar from './components/planinar/dodajPlaninara.components';
 import PromjeniPlaninar from './components/planinar/promjeniPlaninar.components';
+import DodajIzlet from './components/izlet/dodajIzlet.components';
+import Izleti from './components/izlet/izleti.components';
+import PromjeniIzlet from './components/izlet/promjeniIzlet.components';
 
 export default function App() {
   return (
@@ -20,12 +23,16 @@ export default function App() {
         <Route path='/nadzornaploca' element={<NadzornaPloca />} />
       
         <Route path="/planinar" element={<Planinari />} />
-        <Route path="/planinari/dodaj" element={<DodajPlaninar/>} />
+        <Route path="/planinar/dodaj" element={<DodajPlaninar/>} />
         <Route path="/planinari/:sifra" element={<PromjeniPlaninar />} />
 
         <Route path="/planina" element={<Planine />} />
         <Route path="/planine/dodaj" element={<DodajPlanina />} />
         <Route path="/planina/:sifra" element={<PromjeniPlanina />} />
+
+        <Route path='/izlet' element={<Izleti />} />
+        <Route path="/izleti/dodaj" element={<DodajIzlet />} />
+        <Route path="/izleti/:sifra" element={<PromjeniIzlet />} />
 
       </Routes>
      

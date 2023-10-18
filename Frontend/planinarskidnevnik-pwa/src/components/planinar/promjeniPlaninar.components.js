@@ -50,7 +50,7 @@ export default class PromjeniPlaninar extends Component {
     let niz = href.split('/'); 
     const odgovor = await PlaninarDataService.put(niz[niz.length-1],planinar);
     if(odgovor.ok){
-      window.location.href='/polaznici';
+      window.location.href='/planinar';
     }else{
       // pokaži grešku
       console.log(odgovor);
