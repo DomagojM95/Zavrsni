@@ -13,6 +13,9 @@ import PromjeniPlaninar from './components/planinar/promjeniPlaninar.components'
 import DodajIzlet from './components/izlet/dodajIzlet.components';
 import Izleti from './components/izlet/izleti.components';
 import PromjeniIzlet from './components/izlet/promjeniIzlet.components';
+import Dnevnici from './components/dnevnik/dnevnik.components';
+import DodajDnevnik from './components/dnevnik/dodajDnevnik.components';
+import PromjeniDnevnik from './components/dnevnik/promjeniDnevnik.components';
 
 export default function App() {
   return (
@@ -33,6 +36,13 @@ export default function App() {
         <Route path='/izlet' element={<Izleti />} />
         <Route path="/izleti/dodaj" element={<DodajIzlet />} />
         <Route path="/izleti/:sifra" element={<PromjeniIzlet />} />
+
+        <Route path='/dnevnik' element={<Dnevnici />} />
+        <Route path="/dnevnici/dodaj" element={<DodajDnevnik />} />
+        <Route path="/dnevnik/:sifra" element={<PromjeniDnevnik />} />
+
+
+
 
       </Routes>
      

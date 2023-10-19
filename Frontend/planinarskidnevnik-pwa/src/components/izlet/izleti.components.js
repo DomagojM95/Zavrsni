@@ -70,9 +70,9 @@ export default class Izleti extends Component{
 
                     <tr key={index}>
                         <td>{izlet.naziv}</td>
-                        <td>{izlet.planina}</td>
                         <td>{izlet.datum}</td>
                         <td>{izlet.trajanje}</td>
+                        <td>{izlet.planina}</td>
                         <td>
                             <Link className="btn btn-primary gumb"
                             to={`/smjerovi/${izlet.sifra}`}>

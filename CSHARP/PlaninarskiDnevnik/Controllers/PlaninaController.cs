@@ -68,6 +68,38 @@ namespace PlaninarskiDnevnik.Controllers
             }
 
         }
+
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+
+            if (sifra <= 0)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var s = _context.Planina.Find(sifra);
+
+                if (s == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent, s);
+                }
+
+                return new JsonResult(s);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
         /// <summary>
         /// Dodaje planine u bazu
         /// </summary>
