@@ -34,7 +34,7 @@ export default function App() {
         <Route path="/planina/:sifra" element={<PromjeniPlanina />} />
 
         <Route path='/izlet' element={<Izleti />} />
-        <Route path="/izleti/dodaj" element={<DodajIzlet />} />
+        <Route path="/izlet/dodaj" element={<DodajIzlet />} />
         <Route path="/izleti/:sifra" element={<PromjeniIzlet />} />
 
         <Route path='/dnevnik' element={<Dnevnici />} />

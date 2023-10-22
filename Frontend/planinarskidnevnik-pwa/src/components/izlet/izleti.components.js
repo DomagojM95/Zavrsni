@@ -75,7 +75,7 @@ export default class Izleti extends Component{
                         <td>{izlet.planina}</td>
                         <td>
                             <Link className="btn btn-primary gumb"
-                            to={`/smjerovi/${izlet.sifra}`}>
+                            to={`/izleti/${izlet.sifra}`}>
                                 <FaEdit />
                             </Link>
 

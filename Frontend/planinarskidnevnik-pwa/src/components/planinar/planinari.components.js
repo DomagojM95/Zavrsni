@@ -69,7 +69,7 @@ export default class Planinari extends Component {
                 <Card.Body>
                   <Card.Title>{p.ime} {p.prezime}</Card.Title>
                   <Card.Text>
-                    {p.oib}
+                   Oib:  {p.oib} 
                     
                   </Card.Text>
                   <Card.Text>
