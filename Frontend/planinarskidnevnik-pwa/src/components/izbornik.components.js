@@ -23,9 +23,9 @@ export default class Izbornik extends Component{
                   <NavDropdown title="Opcije" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/planinar">Planinar</NavDropdown.Item>
                     <NavDropdown.Item href="/izlet">
-                      izlet
+                      Izlet
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/planina">planina</NavDropdown.Item>
+                    <NavDropdown.Item href="/planina">Planina</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/dnevnik">
                       Dnevnik

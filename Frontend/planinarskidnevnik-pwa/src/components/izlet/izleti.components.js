@@ -1,100 +1,136 @@
 import React, { Component } from "react";
-import { Button, Container, Table } from "react-bootstrap";
 import IzletDataService from "../../services/izleti.services";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import {FaEdit, FaTrash} from "react-icons/fa"
+import { FaEdit } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
+import moment from 'moment';
+import { Modal } from 'react-bootstrap';
 
 
-export default class Izleti extends Component{
+export default class Izleti extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props){
-        super(props);
+    
+    this.dohvatiIzlete = this.dohvatiIzlete.bind(this);
 
-        this.state = {
-            izleti: []
-        };
+    this.state = {
+      izleti: [],
+      prikaziModal: false
+    };
+  }
 
-    }
+  otvoriModal = () => this.setState({ prikaziModal: true });
+  zatvoriModal = () => this.setState({ prikaziModal: false });
 
-    componentDidMount(){
-        this.dohvatiIzleti();
-    }
 
-    async dohvatiIzleti(){
-
-        await IzletDataService.get()
-        .then(response => {
-            this.setState({
-                izleti: response.data
-            });
-            console.log(response.data);
-        })
-        .catch(e =>{
-            console.log(e);
+  componentDidMount() {
+    this.dohvatiIzlete();
+  }
+  dohvatiIzlete() {
+    IzletDataService.getAll()
+      .then(response => {
+        this.setState({
+          izleti: response.data
         });
+        console.log(response);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  async obrisiIzlet(sifra){
+    
+    const odgovor = await IzletDataService.delete(sifra);
+    if(odgovor.ok){
+     this.dohvatiIzlete();
+    }else{
+     this.otvoriModal();
     }
+    
+   }
 
-    async obrisiIzlet(sifra){
-        const odgovor = await IzletDataService.delete(sifra);
-        if(odgovor.ok){
-            this.dohvatiIzleti();
-        }else{
-            alert(odgovor.poruka);
-        }
-    }
+  render() {
+    const { izleti} = this.state;
+    return (
 
-
-    render(){
-
-        const { izleti } = this.state;
-
-        return (
-            <Container>
-               <a href="/izleti/dodaj" className="btn btn-success gumb">
-                Dodaj novi izlet
-               </a>
+    <Container>
+      <a href="/izlet/dodaj" className="btn btn-success gumb">Dodaj novi izlet</a>
+      <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Naziv</th>
+                  <th>Planina</th>
+                  <th>Trajanje</th>
+                  <th>Datum </th>
+                  <th>Akcija</th>
+                </tr>
+              </thead>
+              <tbody>
+              {izleti && izleti.map((i,index) => (
                 
-               <Table striped bordered hover responsive>
-                <thead>
-                    <tr>
-                        <th>Naziv</th>
-                        <th>Datum</th>
-                        <th>Trajanje</th>
-                        <th>Planina</th>
-                       
-                        <th>Akcija</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   { izleti && izleti.map((izlet,index) => (
-
-                    <tr key={index}>
-                        <td>{izlet.naziv}</td>
-                        <td>{izlet.datum}</td>
-                        <td>{izlet.trajanje}</td>
-                        <td>{izlet.planina}</td>
-                        <td>
-                            <Link className="btn btn-primary gumb"
-                            to={`/izleti/${izlet.sifra}`}>
-                                <FaEdit />
-                            </Link>
-
-                            <Button variant="danger" className="gumb"
-                            onClick={()=>this.obrisiIzlet(izlet.sifra)}>
-                                <FaTrash />
-                            </Button>
-                        </td>
-                    </tr>
-
-                   ))}
-                </tbody>
-               </Table>
+                <tr key={index}>
+                  <td> 
+                    <p className="naslovPlanina">{i.naziv} </p>
+                  </td>
 
 
+                  <td> 
+                   
+                    {i.planina}
+                  </td>
 
-            </Container>
+                  <td className="naslovPlanina">
+                    {i.datum==null ? "Nije definirano" :
+                    moment.utc(i.datum).format("HH")} h
+                  </td>
 
 
-        );
-    }
+                  <td className="naslovPlanina">
+                    {i.datum==null ? "Nije definirano" :
+                    moment.utc(i.datum).format("DD. MM. YYYY. ")}
+                  </td>
+                  <td>
+                    <Row>
+                      <Col>
+                        <Link className="btn btn-primary gumb" to={`/izlet/${i.sifra}`}><FaEdit /></Link>
+                      </Col>
+                      <Col>
+                        { 
+                             <Button variant="danger"  className="gumb" onClick={() => this.obrisiIzlet(i.sifra)}><FaTrash /></Button>
+                        }
+                      </Col>
+                    </Row>
+                    
+                  </td>
+                </tr>
+                ))
+              }
+              </tbody>
+            </Table>     
+
+             <Modal show={this.state.prikaziModal} onHide={this.zatvoriModal}>
+              <Modal.Header closeButton>
+                <Modal.Title>Greška prilikom brisanja</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Izlet ima planine.</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={this.zatvoriModal}>
+                  Zatvori
+                </Button>
+              </Modal.Footer>
+            </Modal>
+
+    </Container>
+
+
+    );
+    
+        }
 }

@@ -31,7 +31,7 @@ export default class Planine extends Component {
     this.dohvatiPlanine();
   }
   dohvatiPlanine() {
-    PlaninaDataService.getAll()
+    PlaninaDataService.get()
       .then(response => {
         this.setState({
           planine: response.data

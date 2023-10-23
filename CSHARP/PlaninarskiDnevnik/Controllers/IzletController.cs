@@ -314,8 +314,173 @@ namespace PlaninarskiDnevnik.Controllers
             }
         }
 
+
+
+        [HttpGet]
+        [Route("{sifra:int}/planine")]
+        public IActionResult GetPlanine(int sifra)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (sifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var izlet = _context.Izlet
+                    .Include(i => i.Planine)
+                    .FirstOrDefault(i => i.Sifra == sifra);
+
+                if (izlet == null)
+                {
+                    return BadRequest();
+                }
+
+                if (izlet.Planine == null || izlet.Planine.Count == 0)
+                {
+                    return new EmptyResult();
+                }
+
+                List<PlaninaDTO> vrati = new();
+                izlet.Planine.ForEach(p =>
+                {
+                    vrati.Add(new PlaninaDTO()
+                    {
+                        Sifra = p.Sifra,
+                        Ime = p.Ime,
+                        Visina=p.Visina,
+                        Drzava=p.Drzava
+                    });
+                });
+                return Ok(vrati);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                        StatusCodes.Status503ServiceUnavailable,
+                        ex.Message);
+            }
+
+
+        }
+
+        [HttpPost]
+        [Route("{sifra:int}/dodaj/{planinaSifra:int}")]
+        public IActionResult DodajPlaninu(int sifra, int planinaSifra)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (sifra <= 0 || planinaSifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+
+                var izlet = _context.Izlet
+                    .Include(i => i.Planine)
+                    .FirstOrDefault(i => i.Sifra == sifra);
+
+                if (izlet == null)
+                {
+                    return BadRequest();
+                }
+
+                var planina = _context.Planina.Find(planinaSifra);
+
+                if (planina == null)
+                {
+                    return BadRequest();
+                }
+
+                // napraviti kontrolu da li je taj polaznik već u toj grupi
+                izlet.Planine.Add(planina);
+
+                _context.Izlet.Update(izlet);
+                _context.SaveChanges();
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                       StatusCodes.Status503ServiceUnavailable,
+                       ex.Message);
+
+            }
+
+        }
+
+        [HttpDelete]
+        [Route("{sifra:int}/dodaj/{planinaSifra:int}")]
+        public IActionResult ObrisiPlaninu(int sifra, int planinaSifra)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (sifra <= 0 || planinaSifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+
+                var izlet = _context.Izlet
+                    .Include(i => i.Planine)
+                    .FirstOrDefault(i => i.Sifra == sifra);
+
+                if (izlet == null)
+                {
+                    return BadRequest();
+                }
+
+                var planina = _context.Planina.Find(planinaSifra);
+
+                if (planina == null)
+                {
+                    return BadRequest();
+                }
+
+
+                izlet.Planine.Remove(planina);
+
+                _context.Izlet.Update(izlet);
+                _context.SaveChanges();
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                       StatusCodes.Status503ServiceUnavailable,
+                       ex.Message);
+
+            }
+
+        }
+
+
+
+    }
+}
+
         
 
 
-    }
-    }
+    
+   

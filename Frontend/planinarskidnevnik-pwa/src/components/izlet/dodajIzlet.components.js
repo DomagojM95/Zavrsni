@@ -15,10 +15,7 @@ export default class DodajIzlet extends Component {
 
   constructor(props) {
     super(props);
-    const token = localStorage.getItem('Bearer');
-    if(token==null || token===''){
-      window.location.href='/';
-    }
+   
     this.dodajIzlet = this.dodajIzlet.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dohvatiPlanine = this.dohvatiPlanine.bind(this);
@@ -30,15 +27,15 @@ export default class DodajIzlet extends Component {
   }
 
   componentDidMount() {
-    
+    //console.log("Dohvaćam smjerove");
     this.dohvatiPlanine();
   }
 
   async dodajIzlet(izlet) {
     const odgovor = await IzletDataService.post(izlet);
     if(odgovor.ok){
-
-      window.location.href='/izleti';
+      // routing na smjerovi
+      window.location.href='/izlet';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -66,15 +63,12 @@ export default class DodajIzlet extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const podaci = new FormData(e.target);
-    console.log(podaci.get('datumPocetka'));
-    console.log(podaci.get('vrijeme'));
-    let datum = moment.utc(podaci.get('datumPocetka') + ' ' + podaci.get('vrijeme'));
-    console.log(datum);
-
+   
     this.dodajIzlet({
       naziv: podaci.get('naziv'),
+      datum: podaci.get('datum'),
       trajanje: podaci.get('trajanje'),
-      datumPocetka: datum,
+    
       sifraPlanina: this.state.sifraPlanina
     });
     
@@ -82,7 +76,7 @@ export default class DodajIzlet extends Component {
 
 
   render() { 
-    const { planine} = this.state;
+    const {planine} = this.state;
     return (
     <Container>
         <Form onSubmit={this.handleSubmit}>
@@ -99,20 +93,20 @@ export default class DodajIzlet extends Component {
               this.setState({ sifraPlanina: e.target.value});
             }}>
             {planine && planine.map((planina,index) => (
-                  <option key={index} value={planina.sifra}>{planina.naziv}</option>
+                  <option key={index} value={planina.sifra}>{planina.ime}</option>
 
             ))}
             </Form.Select>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="datumPocetka">
-            <Form.Label>Datum početka</Form.Label>
-            <Form.Control type="date" name="datumPocetka" placeholder=""  />
+          <Form.Group className="mb-3" controlId="datum">
+            <Form.Label>Datum </Form.Label>
+            <Form.Control type="date" name="datum" placeholder=""  />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="trajanje">
             <Form.Label>Trajanje</Form.Label>
-            <Form.Control type="time" name="trajanje" placeholder=""  />
+            <Form.Control type="date" name="trajanje" placeholder=""  />
           </Form.Group>
 
          
@@ -121,7 +115,7 @@ export default class DodajIzlet extends Component {
 
           <Row>
             <Col>
-              <Link className="btn btn-danger gumb" to={`/izleti`}>Odustani</Link>
+              <Link className="btn btn-danger gumb" to={`/izlet`}>Odustani</Link>
             </Col>
             <Col>
             <Button variant="primary" className="gumb" type="submit">

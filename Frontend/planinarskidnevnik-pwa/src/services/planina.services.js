@@ -1,7 +1,7 @@
 import http from '../http-common';
 
 class PlaninaDataService {
-  async getAll() {
+  async get() {
     return await http.get('/planina');
   }
 
