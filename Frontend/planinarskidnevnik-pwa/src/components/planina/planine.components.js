@@ -14,6 +14,7 @@ import { Modal } from 'react-bootstrap';
 export default class Planine extends Component {
   constructor(props) {
     super(props);
+  
     this.dohvatiPlanine = this.dohvatiPlanine.bind(this);
 
     this.state = {
@@ -22,20 +23,20 @@ export default class Planine extends Component {
     };
   }
 
-
-
   otvoriModal = () => this.setState({ prikaziModal: true });
   zatvoriModal = () => this.setState({ prikaziModal: false });
+
 
   componentDidMount() {
     this.dohvatiPlanine();
   }
   dohvatiPlanine() {
-    PlaninaDataService.get()
+    PlaninaDataService.getAll()
       .then(response => {
         this.setState({
           planine: response.data
         });
+        console.log(response);
       })
       .catch(e => {
         console.log(e);

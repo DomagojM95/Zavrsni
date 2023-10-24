@@ -45,7 +45,7 @@ export default class DodajIzlet extends Component {
 
   async dohvatiPlanine() {
 
-    await PlaninaDataService.get()
+    await PlaninaDataService.getAll()
       .then(response => {
         this.setState({
           planine: response.data,
@@ -133,4 +133,3 @@ export default class DodajIzlet extends Component {
     );
   }
 }
-

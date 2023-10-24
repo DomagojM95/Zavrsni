@@ -36,7 +36,7 @@ export default function App() {
 
         <Route path='/izlet' element={<Izlete />} />
         <Route path="/izlet/dodaj" element={<DodajIzlet />} />
-        <Route path="/izleti/:sifra" element={<PromjeniIzlet />} />
+        <Route path="/izlet/:sifra" element={<PromjeniIzlet />} />
 
         <Route path='/dnevnik' element={<Dnevnici />} />
         <Route path="/dnevnici/dodaj" element={<DodajDnevnik />} />

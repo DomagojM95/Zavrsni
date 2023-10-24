@@ -1,14 +1,14 @@
 import http from '../http-common';
 
 class PlaninaDataService {
-  async get() {
-    return await http.get('/planina');
+  async getAll() {
+    return await http.get('/Planina');
   }
 
 
 
   async getBySifra(sifra) {
-    return await http.get('/planina/' + sifra);
+    return await http.get('/Planina/' + sifra);
   }
 
   async post(planina){
