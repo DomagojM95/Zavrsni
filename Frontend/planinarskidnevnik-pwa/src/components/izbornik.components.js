@@ -19,7 +19,7 @@ export default class Izbornik extends Component{
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="/nadzornaploca">Nadzorna ploča</Nav.Link>
+                 
                   <NavDropdown title="Opcije" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/planinar">Planinar</NavDropdown.Item>
                     <NavDropdown.Item href="/izlet">

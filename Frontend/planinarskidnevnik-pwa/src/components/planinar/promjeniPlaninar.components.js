@@ -117,7 +117,7 @@ export default class PromjeniPlaninar extends Component {
          
           <Row>
             <Col>
-              <Link className="btn btn-danger gumb" to={`/planinari`}>Odustani</Link>
+              <Link className="btn btn-danger gumb" to={`/planinar`}>Odustani</Link>
             </Col>
             <Col>
             <Button variant="primary" className="gumb" type="submit">

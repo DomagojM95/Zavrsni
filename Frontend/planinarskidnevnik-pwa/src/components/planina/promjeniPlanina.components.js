@@ -113,7 +113,7 @@ export default class PromjeniPlanina extends Component {
          
           <Row>
             <Col>
-              <Link className="btn btn-danger gumb" to={`/planine`}>Odustani</Link>
+              <Link className="btn btn-danger gumb" to={`/planina`}>Odustani</Link>
             </Col>
             <Col>
             <Button variant="primary" className="gumb" type="submit">

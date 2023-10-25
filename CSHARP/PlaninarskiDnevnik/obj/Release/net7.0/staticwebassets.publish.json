@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "taNt08V4e+8vEOFRwUeB5d0YpYsWTODndm5LZSXlNDk=",
+  "Hash": "ukADBjSPo4zJYTHtbaHm/uoQy519oxGCasc+RkuSiVc=",
   "Source": "PlaninarskiDnevnik",
   "BasePath": "_content/PlaninarskiDnevnik",
   "Mode": "Default",
@@ -255,12 +255,12 @@
       "OriginalItemSpec": "wwwroot\\static\\js\\787.b69b3c92.chunk.js.map"
     },
     {
-      "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.94eff7ca.js",
+      "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.7648dd02.js",
       "SourceId": "PlaninarskiDnevnik",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\",
       "BasePath": "_content/PlaninarskiDnevnik",
-      "RelativePath": "static/js/main.94eff7ca.js",
+      "RelativePath": "static/js/main.7648dd02.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -269,15 +269,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.94eff7ca.js"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.7648dd02.js"
     },
     {
-      "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.94eff7ca.js.LICENSE.txt",
+      "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.7648dd02.js.LICENSE.txt",
       "SourceId": "PlaninarskiDnevnik",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\",
       "BasePath": "_content/PlaninarskiDnevnik",
-      "RelativePath": "static/js/main.94eff7ca.js.LICENSE.txt",
+      "RelativePath": "static/js/main.7648dd02.js.LICENSE.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -286,15 +286,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.94eff7ca.js.LICENSE.txt"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.7648dd02.js.LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.94eff7ca.js.map",
+      "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\js\\main.7648dd02.js.map",
       "SourceId": "PlaninarskiDnevnik",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\",
       "BasePath": "_content/PlaninarskiDnevnik",
-      "RelativePath": "static/js/main.94eff7ca.js.map",
+      "RelativePath": "static/js/main.7648dd02.js.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -303,7 +303,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.94eff7ca.js.map"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.7648dd02.js.map"
     },
     {
       "Identity": "C:\\Users\\38599\\OneDrive\\Documents\\SQL Server Management Studio\\Zavrsni\\CSHARP\\PlaninarskiDnevnik\\wwwroot\\static\\media\\logo.ebadd9baca044c70c7c6aff9d312334c.svg",
